@@ -13,6 +13,9 @@
 
 $router->get('/', 'HomeController@index');
 
+$router->get('/{root}', 'TagPageController@root');
+$router->get('/{root}/{page}', 'TagPageController@page');
+
 /*
 |--------------------------------------------------------------------------
 | Authentication & Password Reset Controllers
