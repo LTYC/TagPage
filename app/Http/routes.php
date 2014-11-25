@@ -11,7 +11,7 @@
 |
 */
 
-$router->get('/', 'HomeController@index');
+$router->get('/', 'TagPageController@index');
 
 $router->get('/{root}', 'TagPageController@root');
 $router->get('/{root}/{page}', 'TagPageController@page');
