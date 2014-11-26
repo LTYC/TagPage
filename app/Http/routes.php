@@ -11,6 +11,10 @@
 |
 */
 
+$router->group(['prefix' => 'admin'], function() use($router) {
+    $router->get('/', 'AdminController@dashboard');
+});
+
 $router->get('/', 'TagPageController@index');
 
 $router->get('/{root}', 'TagPageController@root');
