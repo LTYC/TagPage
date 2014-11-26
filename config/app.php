@@ -116,6 +116,7 @@ return [
 		'TagPage\Providers\AppServiceProvider',
 		'TagPage\Providers\EventServiceProvider',
 		'TagPage\Providers\RouteServiceProvider',
+        'TagPage\Providers\BladeServiceProvider',
 
 		/*
 		 * Laravel Framework Service Providers...

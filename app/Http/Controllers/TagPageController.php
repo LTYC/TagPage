@@ -17,15 +17,13 @@ class TagPageController extends Controller {
     {
         $root = $this->getRoot(null);
 
-        if ($root === null)
-        {
+        if ($root === null) {
             return $redirector->to(URL::to('admin'), 302);
         }
 
         $page = $this->getIndex($root);
 
-        if ($page === null)
-        {
+        if ($page === null) {
             return $redirector->to(URL::to('admin'), 302);
         }
 
@@ -40,10 +38,8 @@ class TagPageController extends Controller {
      */
     public function root(Redirector $redirector, $permaLink)
     {
-        if ($root = $this->getRoot($permaLink))
-        {
-            if ($index = $this->getIndex($root))
-            {
+        if ($root = $this->getRoot($permaLink)) {
+            if ($index = $this->getIndex($root)) {
                 return $redirector->to(URL::to($root->perma_link . '/' . $index->perma_link), 301);
             }
         }
@@ -53,13 +49,11 @@ class TagPageController extends Controller {
 
     public function page(Redirector $redirector, $rootPermaLink, $pagePermaLink)
     {
-        if (!($root = $this->getRoot($rootPermaLink)))
-        {
+        if (!($root = $this->getRoot($rootPermaLink))) {
             return $this->index($redirector)->with('404', 'root');
         }
 
-        if (!($page = $this->getPage($root, $pagePermaLink)))
-        {
+        if (!($page = $this->getPage($root, $pagePermaLink))) {
             return $this->root($redirector, $root)->with('404', 'page');
         }
 
@@ -76,8 +70,7 @@ class TagPageController extends Controller {
 
         $query->where('lft', 1);
 
-        if ($permaLink !== null)
-        {
+        if ($permaLink !== null) {
             $query->where('perma_link', $permaLink);
         }
 
@@ -86,8 +79,7 @@ class TagPageController extends Controller {
 
     protected function getIndex(TagPage $root)
     {
-        if (!$root->isRoot())
-        {
+        if (!$root->isRoot()) {
             throw new \Exception();
         }
 
@@ -96,8 +88,7 @@ class TagPageController extends Controller {
 
     protected function getPage(TagPage $root, $permaLink)
     {
-        if (!$root->isRoot())
-        {
+        if (!$root->isRoot()) {
             throw new \Exception();
         }
 
@@ -106,9 +97,11 @@ class TagPageController extends Controller {
 
     protected function buildPageView(TagPage $page)
     {
-        $viewFile = View::exists($this->theme() . '.pages.page_' . $page->perma_link) ?
-            $this->theme() . '.pages.page_' . $page->perma_link :
-            $this->theme() . '.pages.page';
+        $viewFile = $this->theme() . '.pages.page';
+
+        if (View::exists($this->theme() . '.pages.page_' . $page->perma_link)) {
+            $viewFile = $this->theme() . '.pages.page_' . $page->perma_link;
+        }
 
         return View::make($viewFile, [
             'page' => $page
