@@ -7,19 +7,27 @@ class TagPageSeeder extends Seeder {
 
     public function run()
     {
-        $root = TagPage::create([
-            'perma_link' => 'en'
-        ]);
+        $this->createRoot();
 
-        $root->children()->create([
-            'perma_link' => 'home'
-        ]);
-        $root->children()->create([
-            'perma_link' => 'about_us'
-        ]);
-        $root->children()->create([
-            'perma_link' => 'impressum'
+        for($i = 0; $i < 25; $i++) {
+            $page = $this->getRandomPage();
+            $page->children()->create([
+                'name' => 'page-' . ($i + 1),
+                'perma_link' => ltrim($page->perma_link . '/page-' . ($i + 1), '/'),
+                'sorting' => ''
+            ]);
+        }
+    }
+
+    protected function createRoot() {
+        TagPage::create([
+            'name' => 'root',
+            'perma_link' => '',
+            'sorting' => ''
         ]);
     }
 
+    protected function getRandomPage() {
+        return TagPage::where('depth', '<=', 3)->orderByRaw('RAND()')->first();
+    }
 } 

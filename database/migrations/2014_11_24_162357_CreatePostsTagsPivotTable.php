@@ -12,7 +12,7 @@ class CreatePostsTagsPivotTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('posts_tags', function(Blueprint $table)
+		Schema::create('post_tag', function(Blueprint $table)
 		{
             $table->integer('post_id')->unsigned()->index();
             $table->integer('tag_id')->unsigned()->index();
@@ -26,7 +26,7 @@ class CreatePostsTagsPivotTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('posts_tags');
+		Schema::drop('post_tag');
 	}
 
 }

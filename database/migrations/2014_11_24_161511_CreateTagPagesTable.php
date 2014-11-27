@@ -16,12 +16,16 @@ class CreateTagPagesTable extends Migration {
 		{
 			$table->increments('id');
 
-            $table->string('perma_link')->unique();
+            $table->string('name')->index();
+            $table->string('perma_link')->index();
+            $table->text('sorting');
 
             $table->integer('parent_id')->nullable()->unsigned()->index();
             $table->integer('lft')->nullable()->unsigned();
             $table->integer('rgt')->nullable()->unsigned();
             $table->integer('depth')->nullable()->unsigned();
+
+            $table->unique(['name', 'parent_id']);
 
 			$table->timestamps();
 		});

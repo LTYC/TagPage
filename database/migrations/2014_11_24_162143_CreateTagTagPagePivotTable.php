@@ -16,6 +16,7 @@ class CreateTagTagPagePivotTable extends Migration {
 		{
             $table->integer('tag_id')->unsigned()->index();
             $table->integer('tag_page_id')->unsigned()->index();
+            $table->integer('sort')->default(0);
 		});
 	}
 

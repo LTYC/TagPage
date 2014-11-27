@@ -12,18 +12,20 @@ class TagSeeder extends Seeder {
             'name' => 'Tag #1'
         ]);
 
-        $t2 = Tag::create([
-            'name' => 'Tag #2'
-        ]);
-
         $tagPages = TagPage::all();
         foreach ($tagPages as $tagPage)
         {
             $tagPage->tags()->attach($t1);
         }
 
-        $randomTagPage = TagPage::orderByRaw('RAND()')->first();
-        $randomTagPage->tags()->attach($t2);
+        for($i = 1; $i < 10; $i++) {
+            $this->getRandomTagPage()->tags()->save(Tag::create([
+                'name' => 'Tag #' . ($i + 1)
+            ]));
+        }
     }
 
+    protected function getRandomTagPage() {
+        return TagPage::where('depth', '>', 0)->orderByRaw('RAND()')->first();
+    }
 } 
