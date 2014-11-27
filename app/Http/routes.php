@@ -11,14 +11,16 @@
 |
 */
 
+$router->pattern('path', '[a-z0-9\-/]+');
+
 $router->group(['prefix' => 'admin'], function() use($router) {
     $router->get('/', 'AdminController@dashboard');
 });
 
-$router->get('/', 'TagPageController@index');
+$router->get('/post/{post}', '');
 
-$router->get('/{root}', 'TagPageController@root');
-$router->get('/{root}/{page}', 'TagPageController@page');
+$router->get('/', 'TagPageController@page');
+$router->get('/{path}', 'TagPageController@page');
 
 /*
 |--------------------------------------------------------------------------
