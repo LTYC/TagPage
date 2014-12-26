@@ -1,4 +1,4 @@
-<!doctype>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -39,6 +39,8 @@
         </nav>
 
         @yield('content')
+
+        @partials
 
         <script type="text/javascript" src="{{ URL::to('assets/admin/js/main.js') }}"></script>
     </body>
