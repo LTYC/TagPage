@@ -1,5 +1,5 @@
 <!doctype>
-<html lang="en">
+<html lang="en" ng-app="tagPagesApp">
     <head>
         <meta charset="utf-8">
 
@@ -41,5 +41,8 @@
         @yield('content')
 
         <script type="text/javascript" src="{{ URL::to('assets/admin/js/main.js') }}"></script>
+        <script>
+            angular.module('tagPagesApp').constant('BASE_URL', '{{ url() }}');
+        </script>
     </body>
 </html>

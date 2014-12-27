@@ -33,7 +33,7 @@ gulp.task('less', function () {
 });
 
 gulp.task('js', function () {
-    return gulp.src(third_party.concat([SRC_PATH + 'js/**/*.js']))
+    return gulp.src(SRC_PATH + 'js/**/*.js')
         .pipe(concat('main.js'))
         .pipe(uglify())
         .pipe(gulp.dest(BASE_PATH + 'js'))
@@ -58,14 +58,14 @@ gulp.task('admin_less', function () {
 gulp.task('admin_js', function () {
     return gulp.src(third_party.concat([SRC_PATH + 'admin/js/**/*.js']))
         .pipe(concat('main.js'))
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(gulp.dest(BASE_PATH + 'admin/js'))
         .pipe(notify({"message": "JS compiled!"}));
 });
 
 gulp.task('admin_watch', function () {
-    gulp.watch(SRC_PATH + 'admin/less/*.less', ['less']);
-    gulp.watch(SRC_PATH + 'admin/js/**/*.js', ['js']);
+    gulp.watch(SRC_PATH + 'admin/less/*.less', ['admin_less']);
+    gulp.watch(SRC_PATH + 'admin/js/**/*.js', ['admin_js']);
 })
 
 gulp.task('admin_default', ['admin_less', 'admin_js', 'admin_watch']);

@@ -6,8 +6,8 @@
 
     <h1>{{ ucfirst($page->name) }}</h1>
 
-@foreach($page->ancestors()->where('depth', '>', 0)->get() as $d)
-    / {{ $d->name }}
+@foreach($page->ancestorsAndSelf()->where('depth', '>', 0)->get() as $d)
+    / <a href="{{ URL::to($d->perma_link) }}">{{ $d->name }}</a>
 @endforeach
 
     <div class="container">
