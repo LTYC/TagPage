@@ -12,7 +12,11 @@ class BladeServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-        //
+        Blade::extend(function($view, $compiler) {
+			$pattern = $compiler->createPlainMatcher('partials');
+
+			return preg_replace($pattern, '$1<?php echo "get partials"; ?>', $view);
+		});
 	}
 
 	/**
