@@ -13,7 +13,7 @@
 
 $router->pattern('path', '[a-z0-9\-/]+');
 
-$router->group(['prefix' => 'admin'], function() use($router) {
+$router->group(['prefix' => 'admin', 'before' => 'auth'], function() use($router) {
     $router->get('/', 'AdminController@dashboard');
 });
 
@@ -34,6 +34,6 @@ $router->get('/{path}', 'TagPageController@page');
 */
 
 $router->controllers([
-	'auth' => 'AuthController',
-	'password' => 'PasswordController',
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
 ]);

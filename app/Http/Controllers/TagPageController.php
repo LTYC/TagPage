@@ -2,7 +2,6 @@
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
-use TagPage\Http\Controllers\Controller;
 use TagPage\Tag;
 use TagPage\TagPage;
 use URL;

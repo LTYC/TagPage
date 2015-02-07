@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider {
     {
         Dotenv::required([
             'DB_HOST',
-            'DB_NAME',
+            'DB_DATABASE',
             'DB_USERNAME',
             'DB_PASSWORD'
         ]);

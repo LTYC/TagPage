@@ -1,6 +1,5 @@
 <?php namespace TagPage\Http\Controllers;
 
-use TagPage\Http\Controllers\Controller;
 use View;
 
 class AdminController extends Controller {

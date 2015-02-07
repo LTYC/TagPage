@@ -15,7 +15,7 @@ class BladeServiceProvider extends ServiceProvider {
         Blade::extend(function($view, $compiler) {
 			$pattern = $compiler->createPlainMatcher('partials');
 
-			return preg_replace($pattern, '$1<?php echo "get partials"; ?>', $view);
+			return preg_replace($pattern, '$1<?php if(View::exists("partials")) echo View::fetch("partials"); ?>', $view);
 		});
 	}
 

@@ -26,10 +26,10 @@
                         <li class="active"><a href="#">Pages <span class="sr-only">(current)</span></a></li>
                         <li><a href="#">Tags</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Posts <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span> <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Create</a></li>
-                                <li><a href="#">Edit</a></li>
+                                <li><a href="#/posts/create">Create</a></li>
+                                <li><a href="#/posts">Edit</a></li>
                                 <li><a href="#">Delete</a></li>
                             </ul>
                         </li>

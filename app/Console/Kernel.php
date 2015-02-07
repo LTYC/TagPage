@@ -12,7 +12,7 @@ class Kernel extends ConsoleKernel {
 	 * @var array
 	 */
 	protected $commands = [
-		'TagPage\Console\Commands\InspireCommand',
+		'TagPage\Console\Commands\Inspire',
 	];
 
 	/**
