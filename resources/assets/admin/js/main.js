@@ -1,8 +1,15 @@
 
 var tagPagesApp = angular.module('tagPagesApp', ['ngRoute', 'ui.bootstrap', 'flow']);
 
-tagPagesApp.config(['$httpProvider', 'flowFactoryProvider',
-    function ($httpProvider, flowFactoryProvider) {
+tagPagesApp.config(['$routeProvider', '$httpProvider', 'flowFactoryProvider',
+    function ($routeProvider, $httpProvider, flowFactoryProvider) {
+        $routeProvider.when('/', {
+            controller: 'IndexController',
+            templateUrl: 'admin/partials/pages.index'
+        }).otherwise({
+            redirectTo: '/'
+        });
+
         $httpProvider.interceptors.push(['$q', '$rootScope', '$location', 'BASE_URL', function ($q, $rootScope, $location, BASE_URL) {
             return {
                 'request': function (config) {

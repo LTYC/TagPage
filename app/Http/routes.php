@@ -13,27 +13,17 @@
 
 $router->pattern('path', '[a-z0-9\-/]+');
 
-$router->group(['prefix' => 'admin', 'before' => 'auth'], function() use($router) {
-    $router->get('/', 'AdminController@dashboard');
+$router->group(['prefix' => 'admin', 'middleware' => 'auth'], function() use($router) {
+    $router->get('/', 'Admin\AdminController@dashboard');
+	$router->get('/partials/{view}', 'Admin\PartialsController@load');
 });
-
-$router->get('/post/{post}', '');
-
-$router->get('/', 'TagPageController@page');
-$router->get('/{path}', 'TagPageController@page');
-
-/*
-|--------------------------------------------------------------------------
-| Authentication & Password Reset Controllers
-|--------------------------------------------------------------------------
-|
-| These two controllers handle the authentication of the users of your
-| application, as well as the functions necessary for resetting the
-| passwords for your users. You may modify or remove these files.
-|
-*/
 
 $router->controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+$router->get('/post/{post}', '');
+
+$router->get('/', 'TagPageController@page');
+$router->get('/{path}', 'TagPageController@page');
