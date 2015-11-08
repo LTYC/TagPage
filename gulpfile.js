@@ -68,5 +68,5 @@ gulp.task('admin_watch', function () {
     gulp.watch(SRC_PATH + 'admin/js/**/*.js', ['admin_js']);
 })
 
-gulp.task('admin_default', ['admin_less', 'admin_js', 'admin_watch']);
-gulp.task('default', ['less', 'js', 'watch']);
+gulp.task('admin_default', ['admin_less', 'admin_js']);
+gulp.task('default', ['less', 'js']);

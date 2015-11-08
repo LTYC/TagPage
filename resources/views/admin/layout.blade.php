@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="{{ URL::to('assets/admin/css/main.css') }}">
     </head>
     <body>
+        <div class="loading-indicator" loading-indicator style="display: none;"><img src="{{ url('assets/img/loader.gif') }}"></div>
+
         <nav class="navbar navbar-default" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
